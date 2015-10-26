@@ -48,7 +48,7 @@
                                 if($var === "." || $var === "..") return false;
 
                                 $arr = explode(".", $var);
-                                return ($arr[count($arr - 1)] === "meta");
+                                return ($arr[count($arr) - 1] === "meta");
                             }),
 
                             $_GET["page"]
