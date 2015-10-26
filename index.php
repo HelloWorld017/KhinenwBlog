@@ -43,20 +43,16 @@
 
                         $entries = [];
 
-                        array_filter($dirs, function(){
+                        doclist(
+                            array_filter($dirs, function($var){
+                                if($var === "." || $var === "..") return false;
 
-                        });
-                        foreach($dirs as $entry){
-                            if($entry != "." && $entry != ".."){
-                                $arr = explode(".", $entry);
+                                $arr = explode(".", $var);
+                                return ($arr[count($arr - 1)] === "meta");
+                            }),
 
-                                if($arr[count($arr) - 1] === "meta"){
-                                    $entries[] = $arr[0];
-                                }
-                            }
-                        }
-
-                        doclist($entries, $_GET["page"]);
+                            $_GET["page"]
+                        );
                     ?>
                 </div>
             </div>
